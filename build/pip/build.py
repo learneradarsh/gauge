@@ -23,6 +23,9 @@ def generate_package():
     shutil.rmtree('dist', True)
     print('Creating getgauge package.')
     create_setup_file()
+    print(sys.executable)
+    call([sys.executable, '-m', 'pip', '--version'])
+    call([sys.executable, '-m', 'pip', 'show', 'setuptools'])
     call([sys.executable, 'setup.py', 'sdist'], stdout=sys.stdout, stderr=sys.stderr)
 
 
