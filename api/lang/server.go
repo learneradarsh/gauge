@@ -19,17 +19,16 @@ package lang
 
 import (
 	"context"
-	"log"
-	"runtime/debug"
-
-	"os"
-
 	"encoding/json"
+	"log"
+	"os"
+	"runtime/debug"
 
 	"github.com/getgauge/gauge/api/infoGatherer"
 	"github.com/getgauge/gauge/execution"
 	"github.com/getgauge/gauge/gauge"
 	gm "github.com/getgauge/gauge/gauge_messages"
+	"github.com/getgauge/gauge/plugin/install"
 	"github.com/sourcegraph/jsonrpc2"
 )
 
@@ -264,6 +263,7 @@ func startLsp(logLevel string) (context.Context, *jsonrpc2.Conn) {
 }
 
 func initializeRunner() {
+	install.AllPlugins(true, true)
 	id, err := getLanguageIdentifier()
 	if err != nil || id == "" {
 		logDebug(nil, "Current runner is not compatible with gauge LSP.")

@@ -22,7 +22,6 @@ import (
 	"os"
 
 	"github.com/getgauge/gauge/config"
-
 	gm "github.com/getgauge/gauge/gauge_messages"
 	"github.com/getgauge/gauge/logger"
 	"github.com/getgauge/gauge/manifest"
@@ -121,7 +120,7 @@ func putStubImplementation(filePath string, codes []string) (*gm.FileDiff, error
 		MessageType: gm.Message_StubImplementationCodeRequest,
 		StubImplementationCodeRequest: &gm.StubImplementationCodeRequest{
 			ImplementationFilePath: filePath,
-			Codes: codes,
+			Codes:                  codes,
 		},
 	}
 	response, err := lRunner.runner.ExecuteMessageWithTimeout(stubImplementationCodeRequest)

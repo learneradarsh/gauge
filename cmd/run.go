@@ -18,15 +18,13 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-	"strconv"
-
-	"strings"
-
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 
 	"github.com/getgauge/common"
 	"github.com/getgauge/gauge/config"
@@ -191,7 +189,7 @@ func lookupFlagFromArgs(cmd *cobra.Command, arg string) *pflag.Flag {
 
 func installMissingPlugins(flag bool) {
 	if flag && os.Getenv("GAUGE_PLUGIN_INSTALL") != "false" {
-		install.AllPlugins(machineReadable)
+		install.AllPlugins(machineReadable, false)
 	}
 }
 
